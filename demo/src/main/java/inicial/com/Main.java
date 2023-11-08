@@ -2,12 +2,13 @@ package inicial.com;
 
 //se importa la clase Logger para evitar el uso de System.out.println por la regla de sonar Java:S106
 import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
-        
+
         // ejemplo de uso de logger.info() en lugar de System.out.println
         logger.info("Solo un ejemplo en java");
 
@@ -31,9 +32,13 @@ public class Main {
         miArray[3] = 40;
         miArray[4] = 50;
 
-        // Imprime los elementos del array
+        // Imprime los elementos del array considerendo la regla de sonar s2629 
         for (int i = 0; i < miArray.length; i++) {
-            logger.info(String.valueOf(miArray[i]));
-        }
+            if (logger.isLoggable(Level.INFO)) {
+                logger.info(String.valueOf(miArray[i]));
+            }
+        } 
+
+        
     }
 }
