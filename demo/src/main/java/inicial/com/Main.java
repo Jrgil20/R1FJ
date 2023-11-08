@@ -9,6 +9,7 @@ public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
     
     public static void main(String[] args) {
+        //uso de  try-with-resources para evitar el uso de finally por la regla de sonar Java:S2095
         try (Scanner scanner = new Scanner(System.in)) {
             // ejemplo de uso de logger.info() en lugar de System.out.println
             logger.info("Solo un ejemplo en java");
