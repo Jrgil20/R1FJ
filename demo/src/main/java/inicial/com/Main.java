@@ -21,6 +21,7 @@ public class Main {
             char d = ' ';
             float e = 2.0f;
             boolean f = true;
+            //se concatena los valores de las variables en un String
             String output = "H" + a + b + b + zero + d + "w" + zero + "r" + b + "d" + d + e + d + f;
             logger.info(output);
 
@@ -34,12 +35,24 @@ public class Main {
             miArray[3] = 40;
             miArray[4] = 50;
 
-            //Asigna valores a los elementos del array con un bucle
+            //Asigna valores a los elementos del array con un bucleo
             for (int i = 0; i < miArray.length; i++) {
                 if (logger.isLoggable(Level.INFO)) {
-                    logger.info(String.format("Introduce el valor para el elemento %d:", (i+1)));
+                    //se pregunta si se desea introducir un nuevo valor para el elemento
+                    logger.info(String.format("¿Deseas introducir un nuevo valor para el elemento %d? (s/n)", (i+1)));
                 }
-                miArray[i] = scanner.nextInt();
+                String respuesta = scanner.next();
+                //se valida que la respuesta sea "s" o "n"
+                if (respuesta.equalsIgnoreCase("s")) {
+                    //se pide el valor para el elemento
+                    if (logger.isLoggable(Level.INFO)) {
+                        logger.info(String.format("Introduce el valor para el elemento %d:", (i+1)));
+                    }
+                    //se asigna el valor al elemento
+                    miArray[i] = scanner.nextInt();
+                    //se limpia el buffer del scanner
+                    scanner.nextLine();
+                }
             }
 
             // Imprime los elementos del array considerendo la regla de sonar s2629 
